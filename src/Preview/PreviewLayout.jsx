@@ -11,6 +11,7 @@ import HeaderLayoutPage from './HeaderLayoutPage/HeaderLayoutPage';
 import DataTablePage from './TablePages/DataTablePage';
 import DialogPage from './DialogBoxPage/DialogPage';
 import SidebarPage from './SidebarPage/SidebarPage';
+import HeaderPage from './HeaderPage/HeaderPage';
 import { toggleTheme } from '@/lib/theme';
 
 // ─── Nav config — add new components here ────────────────────────────────────
@@ -35,6 +36,7 @@ const NAV = [
   {
     group: 'Layout',
     items: [
+      { label: 'Header',          id: 'header',          component: HeaderPage },
       { label: 'App Layouts',      id: 'app-layouts',      component: HeaderLayoutPage },
       { label: 'Data Table',       id: 'data-table',       component: DataTablePage },
       { label: 'Dialog Box',       id: 'dialog-box',       component: DialogPage },
