@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import SignupForm from '@/Components/auth/SignupForm/Signup';
+import AuthPreviewWrapper from './AuthPreviewWrapper';
+import signupFormCode from '@/Components/auth/SignupForm/Signup.jsx?raw';
 
 // ─── Preview section wrapper ──────────────────────────────────────────────────
 const Section = ({ label, children }) => (
@@ -26,12 +28,11 @@ const SignupFormPage = () => {
   };
 
   return (
-    <div className="p-8 max-w-2xl mx-auto">
-      <h1 className="text-xl font-bold mb-1">Signup Form</h1>
-      <p className="text-sm text-muted-foreground mb-8">
-        Card-centered signup with name, email, password strength indicator, confirm password, and social sign-up.
-      </p>
-
+    <AuthPreviewWrapper
+      title="Signup Form"
+      description="Card-centered signup with name, email, password strength indicator, confirm password, and social sign-up."
+      code={signupFormCode}
+    >
       <Section label="Default">
         <SignupForm
           onSubmit={handleSubmit}
@@ -72,7 +73,7 @@ const SignupFormPage = () => {
         />
       </Section>
 
-    </div>
+    </AuthPreviewWrapper>
   );
 };
 

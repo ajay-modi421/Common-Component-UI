@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ProfileSettings from '@/Components/Profile/ProfileSettings';
+import AuthPreviewWrapper from '../AuthPages/AuthPreviewWrapper';
+import profileSettingsCode from '@/Components/Profile/ProfileSettings.jsx?raw';
 
 // ─── Preview section wrapper ──────────────────────────────────────────────────
 const Section = ({ label, children }) => (
@@ -22,12 +24,11 @@ const ProfileSettingsPage = () => {
   };
 
   return (
-    <div className="p-8 max-w-3xl mx-auto">
-      <h1 className="text-xl font-bold mb-1">Profile Settings</h1>
-      <p className="text-sm text-muted-foreground mb-8">
-        Full settings page with profile info, password change, notification preferences, privacy controls, and danger zone.
-      </p>
-
+    <AuthPreviewWrapper
+      title="Profile Settings"
+      description="Full settings page with profile info, password change, notification preferences, privacy controls, and danger zone."
+      code={profileSettingsCode}
+    >
       <Section label="Default">
         <ProfileSettings
           onSaveProfile={handleSave('profile')}
@@ -47,8 +48,7 @@ const ProfileSettingsPage = () => {
           isLoading={true}
         />
       </Section>
-
-    </div>
+    </AuthPreviewWrapper>
   );
 };
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ResetPasswordForm from '@/Components/auth/ResetPasswordForm/ResetPasswordForm';
+import AuthPreviewWrapper from './AuthPreviewWrapper';
+import resetPasswordCode from '@/Components/auth/ResetPasswordForm/ResetPasswordForm.jsx?raw';
 
 // ─── Preview section wrapper ──────────────────────────────────────────────────
 const Section = ({ label, children }) => (
@@ -33,12 +35,11 @@ const ResetPasswordPage = () => {
   };
 
   return (
-    <div className="p-8 max-w-2xl mx-auto">
-      <h1 className="text-xl font-bold mb-1">Reset Password</h1>
-      <p className="text-sm text-muted-foreground mb-8">
-        Two-field form to set a new password with strength indicator, confirm match, success and expired-link states.
-      </p>
-
+    <AuthPreviewWrapper
+      title="Reset Password"
+      description="Two-field form to set a new password with strength indicator, confirm match, success and expired-link states."
+      code={resetPasswordCode}
+    >
       <Section label="Default">
         <ResetPasswordForm
           onSubmit={handleSubmit}
@@ -92,7 +93,7 @@ const ResetPasswordPage = () => {
         />
       </Section>
 
-    </div>
+    </AuthPreviewWrapper>
   );
 };
 

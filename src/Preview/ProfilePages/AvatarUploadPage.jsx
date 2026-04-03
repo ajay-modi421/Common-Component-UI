@@ -4,6 +4,10 @@ import {
   DragDropAvatarUpload,
   ModalAvatarUpload,
 } from '@/Components/Profile/AvatarUpload';
+import PreviewCodeWrapper from '../PreviewCodeWrapper';
+import clickAvatarUploadCode from '@/Components/Profile/AvatarUploadClick.jsx?raw';
+import dragDropAvatarUploadCode from '@/Components/Profile/AvatarUploadDragDrop.jsx?raw';
+import modalAvatarUploadCode from '@/Components/Profile/AvatarUploadModal.jsx?raw';
 
 // ─── Preview section wrapper ──────────────────────────────────────────────────
 const Section = ({ label, description, children }) => (
@@ -40,41 +44,59 @@ const AvatarUploadPage = () => {
         label="Click to Upload"
         description="Hover the avatar to reveal the change button. Supports crop, zoom, and rotation after selection."
       >
-        <div className="flex items-start">
-          <ClickAvatarUpload
-            name="Alex Johnson"
-            onSave={handleSave('click')}
-            onRemove={handleRemove('click')}
-            size={96}
-          />
-        </div>
+        <PreviewCodeWrapper
+          title="Click to Upload"
+          description="Inline avatar with hover-triggered change action."
+          code={clickAvatarUploadCode}
+        >
+          <div className="flex items-start">
+            <ClickAvatarUpload
+              name="Alex Johnson"
+              onSave={handleSave('click')}
+              onRemove={handleRemove('click')}
+              size={96}
+            />
+          </div>
+        </PreviewCodeWrapper>
       </Section>
 
       <Section
         label="Drag & Drop"
         description="Drop an image onto the zone or click to browse. Transitions into a crop editor on file selection."
       >
-        <div className="flex items-start">
-          <DragDropAvatarUpload
-            name="Alex Johnson"
-            onSave={handleSave('dragdrop')}
-            onRemove={handleRemove('dragdrop')}
-          />
-        </div>
+        <PreviewCodeWrapper
+          title="Drag & Drop"
+          description="Drop zone that transitions to crop editor."
+          code={dragDropAvatarUploadCode}
+        >
+          <div className="flex items-start">
+            <DragDropAvatarUpload
+              name="Alex Johnson"
+              onSave={handleSave('dragdrop')}
+              onRemove={handleRemove('dragdrop')}
+            />
+          </div>
+        </PreviewCodeWrapper>
       </Section>
 
       <Section
         label="Modal / Dialog"
         description="Click the avatar or button to open a focused dialog with drag-and-drop, crop, zoom, and rotation."
       >
-        <div className="flex items-start">
-          <ModalAvatarUpload
-            name="Alex Johnson"
-            onSave={handleSave('modal')}
-            onRemove={handleRemove('modal')}
-            triggerSize={80}
-          />
-        </div>
+        <PreviewCodeWrapper
+          title="Modal / Dialog"
+          description="Focused modal flow for avatar upload and crop."
+          code={modalAvatarUploadCode}
+        >
+          <div className="flex items-start">
+            <ModalAvatarUpload
+              name="Alex Johnson"
+              onSave={handleSave('modal')}
+              onRemove={handleRemove('modal')}
+              triggerSize={80}
+            />
+          </div>
+        </PreviewCodeWrapper>
       </Section>
     </div>
   );
