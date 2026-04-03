@@ -8,6 +8,8 @@ import ProfileCardPage from './ProfilePages/ProfileCardPage';
 import ProfileSettingsPage from './ProfilePages/ProfileSettingsPage';
 import AvatarUploadPage from './ProfilePages/AvatarUploadPage';
 import HeaderLayoutPage from './HeaderLayoutPage/HeaderLayoutPage';
+import DataTablePage from './TablePages/DataTablePage';
+import DialogPage from './DialogBoxPage/DialogPage';
 import { toggleTheme } from '@/lib/theme';
 
 // ─── Nav config — add new components here ────────────────────────────────────
@@ -33,7 +35,9 @@ const NAV = [
     group: 'Layout',
     items: [
       { label: 'App Layouts',      id: 'app-layouts',      component: HeaderLayoutPage },
-    ],
+      { label: 'Data Table',       id: 'data-table',       component: DataTablePage },
+      { label: 'Dialog Box',       id: 'dialog-box',       component: DialogPage },
+      ],
   },
 ];
 

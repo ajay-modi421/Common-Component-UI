@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ForgotPasswordForm from '@/Components/auth/ForgotPasswordForm/ForgotPasswordFrom';
+import AuthPreviewWrapper from './AuthPreviewWrapper';
+import forgotPasswordCode from '@/Components/auth/ForgotPasswordForm/ForgotPasswordFrom.jsx?raw';
 
 // ─── Preview section wrapper ──────────────────────────────────────────────────
 const Section = ({ label, children }) => (
@@ -33,12 +35,11 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className="p-8 max-w-2xl mx-auto">
-      <h1 className="text-xl font-bold mb-1">Forgot Password</h1>
-      <p className="text-sm text-muted-foreground mb-8">
-        Single-field form to request a password reset link, with success confirmation state.
-      </p>
-
+    <AuthPreviewWrapper
+      title="Forgot Password"
+      description="Single-field form to request a password reset link, with success confirmation state."
+      code={forgotPasswordCode}
+    >
       <Section label="Default">
         <ForgotPasswordForm
           onSubmit={handleSubmit}
@@ -83,7 +84,7 @@ const ForgotPasswordPage = () => {
         />
       </Section>
 
-    </div>
+    </AuthPreviewWrapper>
   );
 };
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import LoginForm from '@/Components/auth/LoginForm/LoginForm';
+import AuthPreviewWrapper from './AuthPreviewWrapper';
+import loginFormCode from '@/Components/auth/LoginForm/LoginForm.jsx?raw';
 
 // ─── Preview section wrapper ──────────────────────────────────────────────────
 const Section = ({ label, children }) => (
@@ -26,12 +28,11 @@ const LoginFormPage = () => {
   };
 
   return (
-    <div className="p-8 max-w-2xl mx-auto">
-      <h1 className="text-xl font-bold mb-1">Login Form</h1>
-      <p className="text-sm text-muted-foreground mb-8">
-        Card-centered login with email/password + social logins, full validation and error states.
-      </p>
-
+    <AuthPreviewWrapper
+      title="Login Form"
+      description="Card-centered login with email/password + social logins, full validation and error states."
+      code={loginFormCode}
+    >
       <Section label="Default">
         <LoginForm
           onSubmit={handleSubmit}
@@ -72,7 +73,7 @@ const LoginFormPage = () => {
           serverError="Invalid email or password. Please try again."
         />
       </Section>
-    </div>
+    </AuthPreviewWrapper>
   );
 };
 

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import ProfileCard from '@/Components/Profile/ProfileCard';
+import PreviewCodeWrapper from '../PreviewCodeWrapper';
+import profileCardDefaultCode from '@/Components/Profile/ProfileCardDefault.jsx?raw';
+import profileCardCompactCode from '@/Components/Profile/ProfileCardCompact.jsx?raw';
+import profileCardHorizontalCode from '@/Components/Profile/ProfileCardHorizontal.jsx?raw';
 
 // ─── Preview section wrapper ──────────────────────────────────────────────────
 const Section = ({ label, children }) => (
@@ -46,103 +50,143 @@ const ProfileCardPage = () => {
       </p>
 
       <Section label="Default">
-        <ProfileCard
-          {...demoUser}
-          isVerified={true}
-          isFollowing={isFollowing}
-          onFollow={() => setIsFollowing(p => !p)}
-          onMessage={() => alert('Message')}
-          onMore={() => alert('More options')}
-        />
+        <PreviewCodeWrapper
+          title="Default"
+          description="Full profile card with cover, socials, badges, meta, stats, and actions."
+          code={profileCardDefaultCode}
+        >
+          <ProfileCard
+            {...demoUser}
+            isVerified={true}
+            isFollowing={isFollowing}
+            onFollow={() => setIsFollowing(p => !p)}
+            onMessage={() => alert('Message')}
+            onMore={() => alert('More options')}
+          />
+        </PreviewCodeWrapper>
       </Section>
 
       <Section label="Default — Minimal (no stats, no socials)">
-        <ProfileCard
-          name="Sara Chen"
-          username="sarachen"
-          role="UI/UX Designer"
-          avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
-          bio="Designing intuitive experiences. Currently at Figma."
-          location="New York, NY"
-          badges={['Figma', 'Prototyping', 'Design Systems']}
-          onFollow={() => {}}
-          onMessage={() => {}}
-        />
+        <PreviewCodeWrapper
+          title="Default (Minimal props)"
+          description="Same default variant, fewer props (no stats/socials)."
+          code={profileCardDefaultCode}
+        >
+          <ProfileCard
+            name="Sara Chen"
+            username="sarachen"
+            role="UI/UX Designer"
+            avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
+            bio="Designing intuitive experiences. Currently at Figma."
+            location="New York, NY"
+            badges={['Figma', 'Prototyping', 'Design Systems']}
+            onFollow={() => {}}
+            onMessage={() => {}}
+          />
+        </PreviewCodeWrapper>
       </Section>
 
       <Section label="Default — With Cover Image">
-        <ProfileCard
-          {...demoUser}
-          name="Marcus Webb"
-          username="marcuswebb"
-          avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&backgroundColor=c0aede"
-          coverUrl="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=600&q=80"
-          isVerified={true}
-          onFollow={() => {}}
-          onMessage={() => {}}
-        />
+        <PreviewCodeWrapper
+          title="Default (With cover)"
+          description="Default variant using a cover image."
+          code={profileCardDefaultCode}
+        >
+          <ProfileCard
+            {...demoUser}
+            name="Marcus Webb"
+            username="marcuswebb"
+            avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&backgroundColor=c0aede"
+            coverUrl="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=600&q=80"
+            isVerified={true}
+            onFollow={() => {}}
+            onMessage={() => {}}
+          />
+        </PreviewCodeWrapper>
       </Section>
 
       <Section label="Compact Variant">
-        <ProfileCard
-          {...demoUser}
-          variant="compact"
-          isFollowing={isFollowing}
-          onFollow={() => setIsFollowing(p => !p)}
-        />
-        <ProfileCard
-          name="Sara Chen"
-          username="sarachen"
-          role="UI/UX Designer"
-          avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
-          variant="compact"
-          isVerified={true}
-          onFollow={() => {}}
-        />
-        <ProfileCard
-          name="Marcus Webb"
-          username="marcuswebb"
-          role="Product Manager"
-          avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&backgroundColor=c0aede"
-          variant="compact"
-          isFollowing={true}
-          onFollow={() => {}}
-        />
+        <PreviewCodeWrapper
+          title="Compact"
+          description="Compact summary layout."
+          code={profileCardCompactCode}
+        >
+          <>
+            <ProfileCard
+              {...demoUser}
+              variant="compact"
+              isFollowing={isFollowing}
+              onFollow={() => setIsFollowing(p => !p)}
+            />
+            <ProfileCard
+              name="Sara Chen"
+              username="sarachen"
+              role="UI/UX Designer"
+              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
+              variant="compact"
+              isVerified={true}
+              onFollow={() => {}}
+            />
+            <ProfileCard
+              name="Marcus Webb"
+              username="marcuswebb"
+              role="Product Manager"
+              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&backgroundColor=c0aede"
+              variant="compact"
+              isFollowing={true}
+              onFollow={() => {}}
+            />
+          </>
+        </PreviewCodeWrapper>
       </Section>
 
       <Section label="Horizontal Variant">
-        <ProfileCard
-          {...demoUser}
-          variant="horizontal"
-          isVerified={true}
-          isFollowing={isFollowing}
-          onFollow={() => setIsFollowing(p => !p)}
-          onMessage={() => alert('Message')}
-        />
-        <ProfileCard
-          name="Sara Chen"
-          username="sarachen"
-          role="UI/UX Designer"
-          avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
-          bio="Designing intuitive experiences. Currently crafting design systems at Figma."
-          location="New York, NY"
-          website="https://sarachen.design"
-          followers="8.2k"
-          following="210"
-          variant="horizontal"
-          onFollow={() => {}}
-          onMessage={() => {}}
-        />
+        <PreviewCodeWrapper
+          title="Horizontal"
+          description="Wide layout with optional bio and meta."
+          code={profileCardHorizontalCode}
+        >
+          <>
+            <ProfileCard
+              {...demoUser}
+              variant="horizontal"
+              isVerified={true}
+              isFollowing={isFollowing}
+              onFollow={() => setIsFollowing(p => !p)}
+              onMessage={() => alert('Message')}
+            />
+            <ProfileCard
+              name="Sara Chen"
+              username="sarachen"
+              role="UI/UX Designer"
+              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
+              bio="Designing intuitive experiences. Currently crafting design systems at Figma."
+              location="New York, NY"
+              website="https://sarachen.design"
+              followers="8.2k"
+              following="210"
+              variant="horizontal"
+              onFollow={() => {}}
+              onMessage={() => {}}
+            />
+          </>
+        </PreviewCodeWrapper>
       </Section>
 
       <Section label="No Actions (view only)">
-        <ProfileCard
-          {...demoUser}
-          name="Jamie Rivera"
-          username="jamierivera"
-          avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Jamie&backgroundColor=d1f7c4"
-          isVerified={false}
-        />
+        <PreviewCodeWrapper
+          title="Default (View only)"
+          description="Default variant without actions."
+          code={profileCardDefaultCode}
+        >
+          <ProfileCard
+            {...demoUser}
+            name="Jamie Rivera"
+            username="jamierivera"
+            avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Jamie&backgroundColor=d1f7c4"
+            isVerified={false}
+          />
+        </PreviewCodeWrapper>
       </Section>
 
     </div>
