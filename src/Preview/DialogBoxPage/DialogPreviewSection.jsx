@@ -6,7 +6,6 @@ function copyToClipboard(text) {
     return navigator.clipboard.writeText(text);
   }
 
-  // Fallback (older browsers / restricted contexts)
   return new Promise((resolve, reject) => {
     try {
       const el = document.createElement('textarea');
@@ -25,14 +24,8 @@ function copyToClipboard(text) {
   });
 }
 
-const AuthPreviewWrapper = ({
-  title,
-  description,
-  code,
-  children,
-  containerClassName = 'p-8 max-w-2xl mx-auto',
-}) => {
-  const [mode, setMode] = useState('ui'); // 'ui' | 'code'
+const DialogPreviewSection = ({ label, code, children }) => {
+  const [mode, setMode] = useState('ui');
   const [copied, setCopied] = useState(false);
 
   const cleanedCode = useMemo(() => {
@@ -47,14 +40,11 @@ const AuthPreviewWrapper = ({
   };
 
   return (
-    <div className={containerClassName}>
-      <div className="flex items-start justify-between gap-4 mb-2">
-        <div className="min-w-0">
-          <h1 className="text-xl font-bold mb-1">{title}</h1>
-          {description ? (
-            <p className="text-sm text-muted-foreground">{description}</p>
-          ) : null}
-        </div>
+    <div className="mb-10">
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <p className="text-[0.7rem] font-semibold uppercase tracking-widest text-muted-foreground">
+          {label}
+        </p>
 
         <div className="shrink-0 flex items-center gap-2">
           <div className="inline-flex rounded-md border border-border bg-background overflow-hidden">
@@ -99,20 +89,20 @@ const AuthPreviewWrapper = ({
         </div>
       </div>
 
-      <div className="mt-6">
-        {mode === 'ui' ? (
-          children
-        ) : (
-          <div className="rounded-lg border border-border bg-background overflow-hidden">
-            <pre className="text-xs leading-relaxed p-4 overflow-auto max-h-[70vh]">
-              <code>{cleanedCode}</code>
-            </pre>
-          </div>
-        )}
-      </div>
+      {mode === 'ui' ? (
+        <div className="flex flex-wrap gap-3">
+          {children}
+        </div>
+      ) : (
+        <div className="rounded-lg border border-border bg-background overflow-hidden">
+          <pre className="text-xs leading-relaxed p-4 overflow-auto max-h-[70vh]">
+            <code>{cleanedCode}</code>
+          </pre>
+        </div>
+      )}
     </div>
   );
 };
 
-export default AuthPreviewWrapper;
+export default DialogPreviewSection;
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import DataTable from '@/Components/Table/DataTable';
+import AuthPreviewWrapper from '../AuthPages/AuthPreviewWrapper';
+import dataTableCode from '@/Components/Table/DataTable.jsx?raw';
 
 // ─── Preview section wrapper ──────────────────────────────────────────────────
 const Section = ({ label, children }) => (
@@ -74,11 +76,12 @@ const ORDER_COLUMNS = [
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 const DataTablePage = () => (
-  <div className="p-8 max-w-5xl mx-auto">
-    <h1 className="text-xl font-bold mb-1">Data Table</h1>
-    <p className="text-sm text-muted-foreground mb-8">
-      Fully dynamic table — columns, data, sorting, search, pagination and custom cell renders are all prop-driven.
-    </p>
+  <AuthPreviewWrapper
+    title="Data Table"
+    description="Fully dynamic table — columns, data, sorting, search, pagination and custom cell renders are all prop-driven."
+    code={dataTableCode}
+    containerClassName="p-8 max-w-5xl mx-auto"
+  >
 
     {/* ── Variant 1: Users table (default settings) ── */}
     <Section label="Default — Users">
@@ -106,7 +109,7 @@ const DataTablePage = () => (
       />
     </Section>
 
-  </div>
+  </AuthPreviewWrapper>
 );
 
 export default DataTablePage;

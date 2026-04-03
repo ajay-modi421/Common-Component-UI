@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import AppDialog from '@/Components/DialogBox/Dialog';
 import { Button } from '@/Components/ui/button';
+import DialogPreviewSection from './DialogPreviewSection';
+import dialogDefaultCode from '@/Components/DialogBox/DialogDefault.jsx?raw';
+import dialogFormCode from '@/Components/DialogBox/DialogForm.jsx?raw';
+import dialogAlertCode from '@/Components/DialogBox/DialogAlert.jsx?raw';
+import dialogScrollableCode from '@/Components/DialogBox/DialogScrollable.jsx?raw';
 
 // ─── Section wrapper ──────────────────────────────────────────────────────────
 const Section = ({ label, children }) => (
@@ -50,7 +55,7 @@ const AppDialogPage = () => {
       </p>
 
       {/* ── Variant 1: Default info ── */}
-      <Section label="Default — Info Dialog">
+      <DialogPreviewSection label="Default — Info Dialog" code={dialogDefaultCode}>
         <Button onClick={() => setInfoOpen(true)}>Open Info Dialog</Button>
         <AppDialog
           open={infoOpen}
@@ -73,10 +78,10 @@ const AppDialogPage = () => {
             <li>Performance improvements and bug fixes</li>
           </ul>
         </AppDialog>
-      </Section>
+      </DialogPreviewSection>
 
       {/* ── Variant 2: Form dialog ── */}
-      <Section label="Form — Edit Profile">
+      <DialogPreviewSection label="Form — Edit Profile" code={dialogFormCode}>
         <Button onClick={() => setFormOpen(true)}>Open Form Dialog</Button>
         <AppDialog
           open={formOpen}
@@ -106,10 +111,10 @@ const AppDialogPage = () => {
             },
           ]}
         />
-      </Section>
+      </DialogPreviewSection>
 
       {/* ── Variant 3: Alert / destructive confirm ── */}
-      <Section label="Alert — Confirm Delete">
+      <DialogPreviewSection label="Alert — Confirm Delete" code={dialogAlertCode}>
         <Button variant="destructive" onClick={() => setAlertOpen(true)}>
           Delete Account
         </Button>
@@ -133,10 +138,10 @@ const AppDialogPage = () => {
             },
           ]}
         />
-      </Section>
+      </DialogPreviewSection>
 
       {/* ── Variant 4: Scrollable ── */}
-      <Section label="Scrollable — Terms & Conditions">
+      <DialogPreviewSection label="Scrollable — Terms & Conditions" code={dialogScrollableCode}>
         <Button variant="outline" onClick={() => setScrollOpen(true)}>
           View Terms
         </Button>
@@ -166,7 +171,7 @@ const AppDialogPage = () => {
             </p>
           ))}
         </AppDialog>
-      </Section>
+      </DialogPreviewSection>
 
     </div>
   );
