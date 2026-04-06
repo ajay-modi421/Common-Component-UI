@@ -12,6 +12,7 @@ import DataTablePage from './TablePages/DataTablePage';
 import DialogPage from './DialogBoxPage/DialogPage';
 import SidebarPage from './SidebarPage/SidebarPage';
 import HeaderPage from './HeaderPage/HeaderPage';
+import FooterPage from './FooterPage/FooterPage';
 import { toggleTheme } from '@/lib/theme';
 
 // ─── Nav config — add new components here ────────────────────────────────────
@@ -41,6 +42,7 @@ const NAV = [
       { label: 'Data Table',       id: 'data-table',       component: DataTablePage },
       { label: 'Dialog Box',       id: 'dialog-box',       component: DialogPage },
       { label: 'Sidebar',          id: 'sidebar',          component: SidebarPage },
+      { label: 'Footer',           id: 'footer',           component: FooterPage },
       ],
   },
 ];
@@ -53,8 +55,7 @@ const PreviewLayout = () => {
   );
 
   const handleToggleTheme = () => {
-    toggleTheme();
-    setIsDark(prev => !prev);
+    setIsDark(toggleTheme());
   };
 
   // Find the active component — pass isDark + onToggleTheme for layout pages
@@ -76,7 +77,7 @@ const PreviewLayout = () => {
             {isDark ? 'Light' : 'Dark'}
           </button>
         </div>
-        <nav className="flex-1 overflow-y-auto py-3 px-3 flex flex-col gap-4">
+        <nav className="flex-1 overflow-y-auto scrollbar-none py-3 px-3 flex flex-col gap-4">
           {NAV.map(({ group, items }) => (
             <div key={group}>
               <p className="text-[0.68rem] font-semibold uppercase tracking-widest text-muted-foreground px-2 mb-1">

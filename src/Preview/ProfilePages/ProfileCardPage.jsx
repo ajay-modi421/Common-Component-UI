@@ -22,7 +22,7 @@ const demoUser = {
   name: 'Alex Johnson',
   username: 'alexjohnson',
   role: 'Full Stack Developer',
-  avatarUrl: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=b6e3f4',
+  avatarUrl: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&mouth=smile&eyes=default&eyebrows=default&backgroundColor=b6e3f4',
   coverUrl: null,
   bio: 'Building products that people love. Open source contributor & coffee enthusiast.',
   location: 'San Francisco, CA',
@@ -83,7 +83,7 @@ const ProfileCardPage = () => {
                 name="Sara Chen"
                 username="sarachen"
                 role="UI/UX Designer"
-                avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
+                avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&mouth=smile&eyes=happy&eyebrows=raisedExcitedNatural&backgroundColor=ffd5dc"
                 bio="Designing intuitive experiences. Currently at Figma."
                 location="New York, NY"
                 badges={['Figma', 'Prototyping', 'Design Systems']}
@@ -102,7 +102,7 @@ const ProfileCardPage = () => {
                 {...demoUser}
                 name="Marcus Webb"
                 username="marcuswebb"
-                avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&backgroundColor=c0aede"
+                avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&mouth=serious&eyes=default&eyebrows=defaultNatural&backgroundColor=c0aede"
                 coverUrl="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=600&q=80"
                 isVerified={true}
                 onFollow={() => {}}
@@ -130,7 +130,7 @@ const ProfileCardPage = () => {
               name="Sara Chen"
               username="sarachen"
               role="UI/UX Designer"
-              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
+              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&mouth=smile&eyes=happy&eyebrows=raisedExcitedNatural&backgroundColor=ffd5dc"
               variant="compact"
               isVerified={true}
               onFollow={() => {}}
@@ -139,7 +139,7 @@ const ProfileCardPage = () => {
               name="Marcus Webb"
               username="marcuswebb"
               role="Product Manager"
-              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&backgroundColor=c0aede"
+              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&mouth=serious&eyes=default&eyebrows=defaultNatural&backgroundColor=c0aede"
               variant="compact"
               isFollowing={true}
               onFollow={() => {}}
@@ -167,7 +167,7 @@ const ProfileCardPage = () => {
               name="Sara Chen"
               username="sarachen"
               role="UI/UX Designer"
-              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
+              avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&mouth=smile&eyes=happy&eyebrows=raisedExcitedNatural&backgroundColor=ffd5dc"
               bio="Designing intuitive experiences. Currently crafting design systems at Figma."
               location="New York, NY"
               website="https://sarachen.design"
@@ -191,7 +191,7 @@ const ProfileCardPage = () => {
             {...demoUser}
             name="Jamie Rivera"
             username="jamierivera"
-            avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Jamie&backgroundColor=d1f7c4"
+            avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Jamie&mouth=smile&eyes=default&eyebrows=defaultNatural&backgroundColor=d1f7c4"
             isVerified={false}
           />
         </PreviewCodeWrapper>

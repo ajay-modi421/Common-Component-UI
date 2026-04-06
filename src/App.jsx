@@ -1,5 +1,5 @@
 import './index.css';
-import PreviewLayout from './preview/PreviewLayout';
+import PreviewLayout from './Preview/PreviewLayout';
 
 function App() {
   return <PreviewLayout />;
