@@ -49,59 +49,67 @@ const ProfileCardPage = () => {
         Versatile profile card in three variants — default, compact, and horizontal — with stats, badges, social links, and action buttons.
       </p>
 
-      <Section label="Default">
+      <Section label="Default variant">
         <PreviewCodeWrapper
           title="Default"
-          description="Full profile card with cover, socials, badges, meta, stats, and actions."
+          description="Same default component — full example, minimal props, and cover image."
           code={profileCardDefaultCode}
         >
-          <ProfileCard
-            {...demoUser}
-            isVerified={true}
-            isFollowing={isFollowing}
-            onFollow={() => setIsFollowing(p => !p)}
-            onMessage={() => alert('Message')}
-            onMore={() => alert('More options')}
-          />
-        </PreviewCodeWrapper>
-      </Section>
-
-      <Section label="Default — Minimal (no stats, no socials)">
-        <PreviewCodeWrapper
-          title="Default (Minimal props)"
-          description="Same default variant, fewer props (no stats/socials)."
-          code={profileCardDefaultCode}
-        >
-          <ProfileCard
-            name="Sara Chen"
-            username="sarachen"
-            role="UI/UX Designer"
-            avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
-            bio="Designing intuitive experiences. Currently at Figma."
-            location="New York, NY"
-            badges={['Figma', 'Prototyping', 'Design Systems']}
-            onFollow={() => {}}
-            onMessage={() => {}}
-          />
-        </PreviewCodeWrapper>
-      </Section>
-
-      <Section label="Default — With Cover Image">
-        <PreviewCodeWrapper
-          title="Default (With cover)"
-          description="Default variant using a cover image."
-          code={profileCardDefaultCode}
-        >
-          <ProfileCard
-            {...demoUser}
-            name="Marcus Webb"
-            username="marcuswebb"
-            avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&backgroundColor=c0aede"
-            coverUrl="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=600&q=80"
-            isVerified={true}
-            onFollow={() => {}}
-            onMessage={() => {}}
-          />
+          <div className="flex flex-col gap-10 w-full">
+            <div>
+              <p className="text-[0.7rem] font-semibold uppercase tracking-widest text-muted-foreground mb-2">
+                Default — full
+              </p>
+              <p className="text-sm text-muted-foreground mb-4">
+                Full profile card with cover, socials, badges, meta, stats, and actions.
+              </p>
+              <ProfileCard
+                {...demoUser}
+                isVerified={true}
+                isFollowing={isFollowing}
+                onFollow={() => setIsFollowing(p => !p)}
+                onMessage={() => alert('Message')}
+                onMore={() => alert('More options')}
+              />
+            </div>
+            <div>
+              <p className="text-[0.7rem] font-semibold uppercase tracking-widest text-muted-foreground mb-2">
+                Default — minimal (no stats, no socials)
+              </p>
+              <p className="text-sm text-muted-foreground mb-4">
+                Same default variant, fewer props (no stats/socials).
+              </p>
+              <ProfileCard
+                name="Sara Chen"
+                username="sarachen"
+                role="UI/UX Designer"
+                avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara&backgroundColor=ffd5dc"
+                bio="Designing intuitive experiences. Currently at Figma."
+                location="New York, NY"
+                badges={['Figma', 'Prototyping', 'Design Systems']}
+                onFollow={() => {}}
+                onMessage={() => {}}
+              />
+            </div>
+            <div>
+              <p className="text-[0.7rem] font-semibold uppercase tracking-widest text-muted-foreground mb-2">
+                Default — with cover image
+              </p>
+              <p className="text-sm text-muted-foreground mb-4">
+                Default variant using a cover image.
+              </p>
+              <ProfileCard
+                {...demoUser}
+                name="Marcus Webb"
+                username="marcuswebb"
+                avatarUrl="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&backgroundColor=c0aede"
+                coverUrl="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=600&q=80"
+                isVerified={true}
+                onFollow={() => {}}
+                onMessage={() => {}}
+              />
+            </div>
+          </div>
         </PreviewCodeWrapper>
       </Section>
 

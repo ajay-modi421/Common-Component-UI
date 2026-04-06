@@ -14,7 +14,9 @@ const Avatar = ({ src, name, size = 'md' }) => {
     : '?';
 
   return (
-    <div className={`${sizes[size]} rounded-full overflow-hidden shrink-0 bg-muted flex items-center justify-center font-semibold text-muted-foreground ring-2 ring-border`}>
+    <div className={`${sizes[size]} rounded-full overflow-hidden shrink-0 
+    bg-muted flex items-center justify-center font-semibold 
+    text-muted-foreground ring-2 ring-border`}>
       {src
         ? <img src={src} alt={name} className="w-full h-full object-cover" />
         : <span>{initials}</span>
@@ -41,8 +43,11 @@ const ProfileCardCompact = ({
             <p className="text-sm font-semibold text-foreground truncate">{name}</p>
             {isVerified && (
               <span className="text-primary shrink-0">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg width="14" height="14" viewBox="0 0 24 24" 
+                fill="currentColor">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" 
+                  stroke="currentColor" strokeWidth="2" fill="none" 
+                  strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </span>
             )}

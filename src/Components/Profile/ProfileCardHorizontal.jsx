@@ -15,7 +15,9 @@ const Avatar = ({ src, name, size = 'md' }) => {
     : '?';
 
   return (
-    <div className={`${sizes[size]} rounded-full overflow-hidden shrink-0 bg-muted flex items-center justify-center font-semibold text-muted-foreground ring-2 ring-border`}>
+    <div className={`${sizes[size]} rounded-full overflow-hidden shrink-0 
+    bg-muted flex items-center justify-center font-semibold text-muted-foreground 
+    ring-2 ring-border`}>
       {src
         ? <img src={src} alt={name} className="w-full h-full object-cover" />
         : <span>{initials}</span>
@@ -50,7 +52,9 @@ const ProfileCardHorizontal = ({
                 <h3 className="text-base font-bold text-foreground">{name}</h3>
                 {isVerified && (
                   <span className="text-primary">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" 
+                    stroke="currentColor" strokeWidth="2" strokeLinecap="round" 
+                    strokeLinejoin="round">
                       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                   </span>
@@ -60,13 +64,15 @@ const ProfileCardHorizontal = ({
             </div>
             <div className="flex items-center gap-2 shrink-0">
               {onFollow && (
-                <Button size="sm" variant={isFollowing ? 'outline' : 'default'} onClick={onFollow} className="h-8 px-3 text-xs gap-1.5">
+                <Button size="sm" variant={isFollowing ? 'outline' : 'default'} 
+                onClick={onFollow} className="h-8 px-3 text-xs gap-1.5">
                   <UserPlus size={13} />
                   {isFollowing ? 'Following' : 'Follow'}
                 </Button>
               )}
               {onMessage && (
-                <Button size="sm" variant="outline" onClick={onMessage} className="h-8 px-3 text-xs gap-1.5">
+                <Button size="sm" variant="outline" onClick={onMessage} 
+                className="h-8 px-3 text-xs gap-1.5">
                   <MessageCircle size={13} /> Message
                 </Button>
               )}
@@ -80,7 +86,8 @@ const ProfileCardHorizontal = ({
               </span>
             )}
             {website && (
-              <a href={website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs text-primary hover:underline">
+              <a href={website} target="_blank" rel="noopener noreferrer" 
+              className="flex items-center gap-1 text-xs text-primary hover:underline">
                 <LinkIcon size={12} /> {website.replace(/^https?:\/\//, '')}
               </a>
             )}
