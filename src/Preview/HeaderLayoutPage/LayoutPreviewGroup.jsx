@@ -26,10 +26,9 @@ function copyToClipboard(text) {
 }
 
 /**
- * Toggle is ABOVE the preview frame so the 480px slot stays a single `h-full` chain
- * for layouts that use `h-full` on their root (see HeaderLayoutPage preview).
+ * One UI/Code toggle for a layout family; multiple stacked previews (same source file).
  */
-const LayoutPreviewSection = ({ label, description, code, codeFileLabel, children }) => {
+const LayoutPreviewGroup = ({ label, description, code, codeFileLabel, previews }) => {
   const [mode, setMode] = useState('ui');
   const [copied, setCopied] = useState(false);
 
@@ -98,22 +97,34 @@ const LayoutPreviewSection = ({ label, description, code, codeFileLabel, childre
         <p className="text-[0.65rem] text-muted-foreground mt-2 text-right">{codeFileLabel}</p>
       ) : null}
 
-      <div
-        className="mt-2 rounded-xl overflow-hidden border border-border bg-background"
-        style={{ height: PREVIEW_PX }}
-      >
-        {mode === 'ui' ? (
-          <div className="h-full w-full min-h-0">
-            {children}
-          </div>
-        ) : (
-          <pre className="h-full m-0 overflow-auto text-xs leading-relaxed p-4 bg-background">
+      {mode === 'ui' ? (
+        <div className="mt-2 flex flex-col gap-8">
+          {previews.map((p) => (
+            <div key={p.key}>
+              <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
+                {p.label}
+              </p>
+              {p.description && (
+                <p className="text-xs text-muted-foreground mb-2">{p.description}</p>
+              )}
+              <div
+                className="rounded-xl overflow-hidden border border-border bg-background"
+                style={{ height: PREVIEW_PX }}
+              >
+                <div className="h-full w-full min-h-0">{p.node}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-2 rounded-xl overflow-hidden border border-border bg-background">
+          <pre className="max-h-[70vh] m-0 overflow-auto text-xs leading-relaxed p-4 bg-background">
             <code>{cleanedCode}</code>
           </pre>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default LayoutPreviewSection;
+export default LayoutPreviewGroup;

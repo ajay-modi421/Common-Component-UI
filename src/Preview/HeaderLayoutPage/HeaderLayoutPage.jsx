@@ -1,6 +1,6 @@
 import React from 'react';
 import { ClassicLayout, CollapsibleLayout, DrawerLayout, NestedLayout } from '@/Components/Layouts/Layouts';
-import LayoutPreviewSection from './LayoutPreviewSection';
+import LayoutPreviewGroup from './LayoutPreviewGroup';
 import classicLayoutCode from '@/Components/Layouts/ClassicLayout.jsx?raw';
 import collapsibleLayoutCode from '@/Components/Layouts/CollapsibleLayout.jsx?raw';
 import drawerLayoutCode from '@/Components/Layouts/DrawerLayout.jsx?raw';
@@ -13,86 +13,95 @@ const AppLayoutPage = ({ isDark, onToggleTheme }) => {
     <div className="p-8 max-w-5xl mx-auto">
       <h1 className="text-xl font-bold mb-4">App Layouts</h1>
 
-      <LayoutPreviewSection
-        label="Classic — Sidebar + Minimal Header"
-        description="Fixed sidebar with grouped nav items and a minimal title-only header."
+      <LayoutPreviewGroup
+        label="Classic — Fixed sidebar + header variants"
+        description="Fixed sidebar with grouped nav items. Swap the header: minimal title, full breadcrumb + search, or tabbed main routes."
         code={classicLayoutCode}
         codeFileLabel="ClassicLayout.jsx (+ LayoutShared.jsx for nav data)"
-      >
-        <ClassicLayout headerVariant="minimal" {...sharedProps} />
-      </LayoutPreviewSection>
+        previews={[
+          {
+            key: 'classic-minimal',
+            label: 'Minimal header',
+            description: 'Title-only header next to the sidebar.',
+            node: <ClassicLayout headerVariant="minimal" {...sharedProps} />,
+          },
+          {
+            key: 'classic-full',
+            label: 'Full header (breadcrumb + search)',
+            description: 'Breadcrumb for the current page, search, notifications and user menu.',
+            node: <ClassicLayout headerVariant="full" {...sharedProps} />,
+          },
+          {
+            key: 'classic-tabs',
+            label: 'Tabs header',
+            description: 'Top tabs for Main routes (Dashboard, Inbox, …). The sidebar keeps other groups (e.g. Manage) so navigation is not duplicated.',
+            node: <ClassicLayout headerVariant="tabs" {...sharedProps} />,
+          },
+        ]}
+      />
 
-      <LayoutPreviewSection
-        label="Classic — Sidebar + Full Header (breadcrumb + search)"
-        description="Same fixed sidebar paired with the full header: one breadcrumb for the current page, search, notifications and user menu."
-        code={classicLayoutCode}
-        codeFileLabel="ClassicLayout.jsx"
-      >
-        <ClassicLayout headerVariant="full" {...sharedProps} />
-      </LayoutPreviewSection>
-
-      <LayoutPreviewSection
-        label="Classic — Sidebar + Tabs Header"
-        description="Top tabs list the Main routes (Dashboard, Inbox, …). The sidebar keeps only other groups (e.g. Manage) so navigation is not duplicated."
-        code={classicLayoutCode}
-        codeFileLabel="ClassicLayout.jsx"
-      >
-        <ClassicLayout headerVariant="tabs" {...sharedProps} />
-      </LayoutPreviewSection>
-
-      <LayoutPreviewSection
-        label="Collapsible — Icon Rail (collapsed) + Full Header"
-        description="Sidebar collapses to a narrow icon rail. Click the arrow to expand or collapse."
+      <LayoutPreviewGroup
+        label="Collapsible — Sidebar icon rail"
+        description="Sidebar expands to full width or collapses to a narrow icon rail. Use the chevron on the sidebar edge to toggle."
         code={collapsibleLayoutCode}
         codeFileLabel="CollapsibleLayout.jsx"
-      >
-        <CollapsibleLayout headerVariant="full" defaultCollapsed={true} {...sharedProps} />
-      </LayoutPreviewSection>
+        previews={[
+          {
+            key: 'collapsible-collapsed-full',
+            label: 'Icon rail (collapsed) + full header',
+            description: 'Starts collapsed to icons; expand to see labels.',
+            node: <CollapsibleLayout headerVariant="full" defaultCollapsed={true} {...sharedProps} />,
+          },
+          {
+            key: 'collapsible-expanded-minimal',
+            label: 'Expanded + minimal header',
+            description: 'Starts expanded; collapse to shrink to icons.',
+            node: <CollapsibleLayout headerVariant="minimal" defaultCollapsed={false} {...sharedProps} />,
+          },
+        ]}
+      />
 
-      <LayoutPreviewSection
-        label="Collapsible — Expanded + Minimal Header"
-        description="Same collapsible sidebar, starting expanded. Toggle it to shrink to icons."
-        code={collapsibleLayoutCode}
-        codeFileLabel="CollapsibleLayout.jsx"
-      >
-        <CollapsibleLayout headerVariant="minimal" defaultCollapsed={false} {...sharedProps} />
-      </LayoutPreviewSection>
-
-      <LayoutPreviewSection
-        label="Drawer — Overlay Sidebar + Minimal Header"
-        description="No persistent sidebar — a hamburger button slides in a full overlay drawer. Great for compact or mobile-first layouts."
+      <LayoutPreviewGroup
+        label="Drawer — Overlay sidebar"
+        description="No persistent sidebar — a control opens a full overlay drawer. Suited to compact or mobile-first layouts."
         code={drawerLayoutCode}
         codeFileLabel="DrawerLayout.jsx"
-      >
-        <DrawerLayout headerVariant="minimal" {...sharedProps} />
-      </LayoutPreviewSection>
+        previews={[
+          {
+            key: 'drawer-minimal',
+            label: 'Minimal header',
+            description: 'Hamburger slides in the nav over the content.',
+            node: <DrawerLayout headerVariant="minimal" {...sharedProps} />,
+          },
+          {
+            key: 'drawer-full',
+            label: 'Full header',
+            description: 'Same drawer with breadcrumbs, search, and user menu.',
+            node: <DrawerLayout headerVariant="full" {...sharedProps} />,
+          },
+        ]}
+      />
 
-      <LayoutPreviewSection
-        label="Drawer — Overlay Sidebar + Full Header"
-        description="Drawer layout with the full header including breadcrumbs and search."
-        code={drawerLayoutCode}
-        codeFileLabel="DrawerLayout.jsx"
-      >
-        <DrawerLayout headerVariant="full" {...sharedProps} />
-      </LayoutPreviewSection>
-
-      <LayoutPreviewSection
-        label="Nested Nav — Multi-level Sidebar + Full Header"
-        description="Sidebar with collapsible parent → child navigation groups. Click any parent item to expand its children."
+      <LayoutPreviewGroup
+        label="Nested nav — Multi-level sidebar"
+        description="Parents expand to show child routes. The tabs variant uses workspace tabs with a sub-nav row for nested sections (e.g. Reports → Weekly / Monthly)."
         code={nestedLayoutCode}
         codeFileLabel="NestedLayout.jsx"
-      >
-        <NestedLayout headerVariant="full" {...sharedProps} />
-      </LayoutPreviewSection>
-
-      <LayoutPreviewSection
-        label="Nested Nav — Multi-level Sidebar + Tabs Header"
-        description="Top-level routes are workspace tabs only — no left sidebar. Sections with sub-pages show a compact sub-nav row under the header (e.g. Reports → Weekly / Monthly)."
-        code={nestedLayoutCode}
-        codeFileLabel="NestedLayout.jsx"
-      >
-        <NestedLayout headerVariant="tabs" {...sharedProps} />
-      </LayoutPreviewSection>
+        previews={[
+          {
+            key: 'nested-full',
+            label: 'Full header',
+            description: 'Collapsible parent → child groups in the sidebar.',
+            node: <NestedLayout headerVariant="full" {...sharedProps} />,
+          },
+          {
+            key: 'nested-tabs',
+            label: 'Tabs header',
+            description: 'Main routes as tabs; nested pages get a compact sub-nav under the header.',
+            node: <NestedLayout headerVariant="tabs" {...sharedProps} />,
+          },
+        ]}
+      />
     </div>
   );
 };
